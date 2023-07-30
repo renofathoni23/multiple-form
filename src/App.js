@@ -7,6 +7,7 @@ import StepForm from "./components/Form/StepForm";
 import FormContext from "./store/FormContext";
 import { useContext } from "react";
 import ShippingForm from "./components/Form/ShippingForm";
+import FinishForm from "./components/Form/FinishForm";
 
 const StyledContainer = styled.div`
   width: 1100px;
@@ -28,19 +29,27 @@ const FormWrapper = styled.div`
 function App() {
   const methods = useForm();
   const formCtx = useContext(FormContext);
-  let formStep = formCtx.step;
-  console.log(formStep);
+  var formStep = formCtx.step;
+
+  const ActiveStepContent = () => {
+    switch (formStep) {
+      case 1:
+        return <DeliveryForm></DeliveryForm>;
+      case 2:
+        return <ShippingForm></ShippingForm>;
+      case 3:
+        return <FinishForm></FinishForm>;
+      default:
+        return null;
+    }
+  };
   return (
     <div className="App">
       <FormProvider {...methods}>
         <StepForm></StepForm>
         <StyledContainer>
           <FormContainer>
-            <FormWrapper>
-              {formStep === 1 && <DeliveryForm></DeliveryForm>}
-              {formStep === 2 && <ShippingForm></ShippingForm>}
-              {formStep === 3 && <DeliveryForm></DeliveryForm>}
-            </FormWrapper>
+            <FormWrapper>{ActiveStepContent()}</FormWrapper>
           </FormContainer>
           <Summary></Summary>
         </StyledContainer>

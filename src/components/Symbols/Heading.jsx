@@ -28,7 +28,7 @@ const UnderlineTitle = styled.div`
 export default function Heading(props) {
   return (
     <HeadingContainer>
-      <HeadingTitle>{props.name}</HeadingTitle>
+      <HeadingTitle>{props.title}</HeadingTitle>
       <UnderlineTitle></UnderlineTitle>
     </HeadingContainer>
   );

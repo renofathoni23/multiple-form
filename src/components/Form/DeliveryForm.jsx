@@ -25,6 +25,7 @@ const BackButtonContainer = styled.div`
   column-gap: 10px;
   align-items: center;
   margin-bottom: 24px;
+  cursor: pointer;
 `;
 
 const BackButtonTitle = styled.span`
@@ -50,7 +51,7 @@ function DeliveryForm() {
         <BackButtonTitle>Back to cart</BackButtonTitle>
       </BackButtonContainer>
       <HeadingCheckBoxContainer>
-        <Heading name="Delivery details"></Heading>
+        <Heading title="Delivery details"></Heading>
         <CheckBox
           register={register}
           name="isDropshipper"
