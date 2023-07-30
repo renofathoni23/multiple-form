@@ -23,14 +23,23 @@ const FormContainer = styled.div`
   height: 100%;
 `;
 const FormWrapper = styled.div`
+  height: 100%;
   margin: 30px 30px 0 40px;
+`;
+
+const FormFinishContainer = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 `;
 
 function App() {
   const methods = useForm();
   const formCtx = useContext(FormContext);
   var formStep = formCtx.step;
-
+  console.log(formStep);
   const ActiveStepContent = () => {
     switch (formStep) {
       case 1:

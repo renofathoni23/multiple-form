@@ -3,17 +3,20 @@ import React, { useState } from "react";
 const FormContext = React.createContext({
   onBack: () => {},
   onNext: () => {},
+  resetStep: () => {},
   step: 0,
   shipmentMethod: {},
   paymentMethod: {},
   onChangeShipment: () => {},
   onChangePayment: () => {},
+  cost: 0,
 });
 
 export const FormProvider = (props) => {
   const [step, setStep] = useState(1);
   const [shipmentMethod, setShipmentMethod] = useState({});
   const [paymentMethod, setPaymentMethod] = useState({});
+  const [cost, setCost] = useState(500000);
 
   function onNext() {
     setStep((prev) => prev + 1);
@@ -31,6 +34,10 @@ export const FormProvider = (props) => {
     setPaymentMethod(payment);
   }
 
+  function resetStep() {
+    setStep(1);
+  }
+
   const contextValue = {
     onBack: onBack,
     onNext: onNext,
@@ -39,6 +46,8 @@ export const FormProvider = (props) => {
     paymentMethod: paymentMethod,
     onChangePayment: onChangePayment,
     onChangeShipment: onChangeShipment,
+    cost: cost,
+    resetStep: resetStep,
   };
 
   return (

@@ -5,6 +5,7 @@ import FormContext from "../../store/FormContext";
 import { useContext } from "react";
 import Heading from "../Symbols/Heading";
 import RadioButton from "../Symbols/RadioButton";
+import { useFormContext } from "react-hook-form";
 
 const BackButtonContainer = styled.div`
   display: flex;
@@ -30,11 +31,12 @@ const OptionContainer = styled.div`
   margin-bottom: 60px;
 `;
 function ShippingForm() {
+  const { setValue } = useFormContext();
   const formCtx = useContext(FormContext);
   let shipmentValue = [
-    { id: 1, method: "GO-SEND", amount: "15,000", estimate: "today" },
-    { id: 2, method: "JNE", amount: "9,000", estimate: "2 days" },
-    { id: 3, method: "Personal Courir", amount: "29,000", estimate: "1 day" },
+    { id: 1, method: "GO-SEND", amount: 15000, estimate: "today" },
+    { id: 2, method: "JNE", amount: 9000, estimate: "2 days" },
+    { id: 3, method: "Personal Courir", amount: 29000, estimate: "1 day" },
   ];
 
   let paymentValue = [
@@ -43,8 +45,15 @@ function ShippingForm() {
     { id: 3, method: "Virtual Account" },
   ];
 
-  const [currentShipment, setCurrentShipment] = useState(shipmentValue[0].id);
   console.log(formCtx.shipmentMethod.id);
+
+  const setValueShipmentToForm = (shipment) => {
+    setValue("shipment", shipment);
+  };
+
+  const setValuePaymentToForm = (payment) => {
+    setValue("payment", payment);
+  };
 
   return (
     <>
@@ -56,7 +65,10 @@ function ShippingForm() {
       <OptionContainer>
         {shipmentValue.map((shipment) => (
           <div
-            onClick={() => formCtx.onChangeShipment(shipment)}
+            onClick={() => {
+              formCtx.onChangeShipment(shipment);
+              setValueShipmentToForm(shipment);
+            }}
             key={shipment.id}
           >
             <RadioButton
@@ -73,7 +85,10 @@ function ShippingForm() {
         {" "}
         {paymentValue.map((payment) => (
           <div
-            onClick={() => formCtx.onChangePayment(payment)}
+            onClick={() => {
+              formCtx.onChangePayment(payment);
+              setValuePaymentToForm(payment);
+            }}
             key={payment.id}
           >
             <RadioButton

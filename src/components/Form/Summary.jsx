@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import CostSection from "../Summary/CostSection";
 import Button from "../Symbols/Button";
@@ -78,6 +78,7 @@ function Summary() {
   let shipment = formCtx.shipmentMethod;
   let payment = formCtx.paymentMethod;
   let step = formCtx.step;
+  let cost = formCtx.cost;
 
   const renderTitleButton = () => {
     if (step === 1) {
@@ -121,19 +122,19 @@ function Summary() {
             {isDropShipper && (
               <CostSection
                 title={"Dropshipping Fee"}
-                cost={"5000"}
+                cost={"5,900"}
               ></CostSection>
             )}
             {Object.keys(shipment).length !== 0 && (
               <CostSection
                 title={`${shipment?.method} shipment`}
-                cost={shipment?.amount}
+                cost={shipment?.amount.toLocaleString()}
               ></CostSection>
             )}
           </CostContainer>
           <TotalCostContainer>
             <CostText>Total</CostText>
-            <CostText>505,900</CostText>
+            <CostText>{cost.toLocaleString()}</CostText>
           </TotalCostContainer>
           {step < 3 && renderTitleButton()}
         </InformationContainer>

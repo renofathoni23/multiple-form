@@ -1,7 +1,86 @@
 import React from "react";
+import styled from "styled-components";
+import Heading from "../Symbols/Heading";
+import FormContext from "../../store/FormContext";
+import { useContext } from "react";
+import arrow from "../../assets/arrow_back.png";
+import { useFormContext } from "react-hook-form";
 
+const FinishFormContainer = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
+
+const CenterFormContainer = styled.div`
+  width: 50%;
+  height: 50%;
+`;
+
+const OrderText = styled.span`
+  color: #000;
+  font-size: 14px;
+  font-weight: 400;
+  display: flex;
+  flex-direction: column;
+  margin-top: 26px;
+`;
+
+const ShipmentInformationText = styled.span`
+  color: #000;
+  font-size: 14px;
+  font-weight: 400;
+  opacity: 0.6;
+  margin-top: 9px;
+`;
+
+const BackButtonContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  column-gap: 10px;
+  align-items: center;
+  cursor: pointer;
+  margin-bottom: 24px;
+  margin-top: 60px;
+`;
+
+const BackButtonTitle = styled.span`
+  color: #000;
+  font-size: 14px;
+  font-weight: 500;
+  opacity: 0.6;
+`;
 function FinishForm() {
-  return <div>FinishForm</div>;
+  const formCtx = useContext(FormContext);
+  let dayShipment = formCtx.shipmentMethod?.estimate;
+  let methodShipment = formCtx.shipmentMethod?.method;
+
+  const { reset } = useFormContext();
+
+  const onReset = () => {
+    formCtx.resetStep();
+    formCtx.onChangePayment({});
+    formCtx.onChangeShipment({});
+    reset();
+  };
+  return (
+    <FinishFormContainer>
+      <CenterFormContainer>
+        <Heading title="Thank You"></Heading>
+        <OrderText>Order ID: XXKYB</OrderText>
+        <ShipmentInformationText>
+          Your Ordered will be delivered {dayShipment} with {methodShipment}
+        </ShipmentInformationText>
+        <BackButtonContainer onClick={onReset}>
+          <img src={arrow} alt="arrow"></img>
+          <BackButtonTitle>Go to homepage</BackButtonTitle>
+        </BackButtonContainer>
+      </CenterFormContainer>
+    </FinishFormContainer>
+  );
 }
 
 export default FinishForm;
