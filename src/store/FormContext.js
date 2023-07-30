@@ -10,6 +10,7 @@ const FormContext = React.createContext({
   onChangeShipment: () => {},
   onChangePayment: () => {},
   cost: 0,
+  changeCost: () => {},
 });
 
 export const FormProvider = (props) => {
@@ -38,6 +39,10 @@ export const FormProvider = (props) => {
     setStep(1);
   }
 
+  function changeCost(cost) {
+    setCost(cost);
+  }
+
   const contextValue = {
     onBack: onBack,
     onNext: onNext,
@@ -47,6 +52,7 @@ export const FormProvider = (props) => {
     onChangePayment: onChangePayment,
     onChangeShipment: onChangeShipment,
     cost: cost,
+    changeCost: changeCost,
     resetStep: resetStep,
   };
 

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Heading from "../Symbols/Heading";
 import FormContext from "../../store/FormContext";
@@ -57,6 +57,7 @@ function FinishForm() {
   const formCtx = useContext(FormContext);
   let dayShipment = formCtx.shipmentMethod?.estimate;
   let methodShipment = formCtx.shipmentMethod?.method;
+  const [orderId, setOrderId] = useState();
 
   const { reset } = useFormContext();
 
@@ -66,11 +67,25 @@ function FinishForm() {
     formCtx.onChangeShipment({});
     reset();
   };
+
+  const generateOrderId = () => {
+    const characters = "23456789ABCDEFGHJKLMNPQRSTUVWXYZ";
+    let orderId = "";
+    for (let i = 0; i < 5; i++) {
+      const randomIndex = Math.floor(Math.random() * characters.length);
+      orderId += characters.charAt(randomIndex);
+    }
+    setOrderId(orderId);
+  };
+
+  useEffect(() => {
+    generateOrderId();
+  }, []);
   return (
     <FinishFormContainer>
       <CenterFormContainer>
         <Heading title="Thank You"></Heading>
-        <OrderText>Order ID: XXKYB</OrderText>
+        <OrderText>Order ID: {orderId}</OrderText>
         <ShipmentInformationText>
           Your Ordered will be delivered {dayShipment} with {methodShipment}
         </ShipmentInformationText>

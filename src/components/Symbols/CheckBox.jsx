@@ -1,5 +1,8 @@
 import React from "react";
 import styled from "styled-components";
+import { useContext } from "react";
+import FormContext from "../../store/FormContext";
+import { useFormContext } from "react-hook-form";
 
 const CheckBoxInput = styled.input.attrs({
   type: "checkbox",
@@ -23,9 +26,24 @@ const CheckBoxLabel = styled.span`
 `;
 
 function CheckBox({ register, name, ...props }) {
+  const formCtx = useContext(FormContext);
+  const { setValue } = useFormContext();
+  const handleCheckBoxChange = (event) => {
+    const { checked } = event.target;
+    if (checked) {
+      setValue("isDropshipper", true);
+      formCtx.changeCost(formCtx.cost + 5900);
+    } else {
+      setValue("isDropshipper", false);
+      formCtx.changeCost(formCtx.cost - 5900);
+    }
+  };
   return (
     <CheckBoxContainer>
-      <CheckBoxInput {...register(name)}></CheckBoxInput>
+      <CheckBoxInput
+        {...register(name)}
+        onChange={handleCheckBoxChange}
+      ></CheckBoxInput>
       <CheckBoxLabel>{props.label}</CheckBoxLabel>
     </CheckBoxContainer>
   );
