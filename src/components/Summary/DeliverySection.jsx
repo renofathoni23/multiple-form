@@ -15,6 +15,8 @@ const TitleMethod = styled.span`
 
 const TitleMethodContainer = styled.div`
   margin: 21px 0px;
+  display: flex;
+  flex-direction: column;
 `;
 
 const TextMethod = styled.span`

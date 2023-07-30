@@ -46,13 +46,12 @@ const CheckImage = styled.img.attrs({
   visibility: ${(props) => (props.isActive ? "visible" : "hidden")};
 `;
 function RadioButton({ type, method, amount, isActive }) {
-  //   console.log(id, "id");
-  //   console.log(currentShipment, "shipment id");
-  //   console.log(shipmentActive);
   return (
     <RadioButtonContainer isActive={isActive}>
       <TextContainer>
-        <TitleMethod isActive={isActive}>{method}</TitleMethod>
+        <TitleMethod isActive={isActive} type={type}>
+          {method}
+        </TitleMethod>
         <CostMethod isActive={isActive}>{amount}</CostMethod>
       </TextContainer>
       <CheckImage isActive={isActive}></CheckImage>

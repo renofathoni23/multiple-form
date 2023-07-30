@@ -3,6 +3,9 @@ import styled from "styled-components";
 import CostSection from "../Summary/CostSection";
 import Button from "../Symbols/Button";
 import { useFormContext } from "react-hook-form";
+import { useContext } from "react";
+import FormContext from "../../store/FormContext";
+import DeliverySection from "../Summary/DeliverySection";
 
 const SummaryContainer = styled.div`
   width: 25%;
@@ -47,7 +50,7 @@ const ItemPurchasedText = styled.span`
 `;
 
 const CostContainer = styled.div`
-  margin-top: 88px;
+  /* margin-top: 88px; */
   display: flex;
   flex-direction: column;
 `;
@@ -71,6 +74,24 @@ function Summary() {
   const { getValues } = useFormContext();
   let isDropShipper = getValues("isDropshipper");
 
+  const formCtx = useContext(FormContext);
+  let shipment = formCtx.shipmentMethod;
+  let payment = formCtx.paymentMethod;
+  let step = formCtx.step;
+
+  const renderTitleButton = () => {
+    if (step === 1) {
+      return <Button title={"Continue to Payment"}></Button>;
+    } else if (step === 2) {
+      if (
+        Object.keys(shipment).length !== 0 &&
+        Object.keys(payment).length !== 0
+      ) {
+        return <Button title={`Pay with ${payment?.method}`}></Button>;
+      }
+    }
+  };
+
   return (
     <SummaryContainer>
       <ItemSummaryContainer>
@@ -82,10 +103,18 @@ function Summary() {
             title={"Delivery estimation"}
             method={"today by GO-SEND"}
           ></DeliverySection> */}
-          {/* <DeliverySection
-            title={"Payment"}
-            method={"Bank Transfer"}
-          ></DeliverySection> */}
+          {Object.keys(shipment).length !== 0 && (
+            <DeliverySection
+              title={"Delivery estimation"}
+              method={`${shipment?.estimate} by ${shipment?.method}`}
+            ></DeliverySection>
+          )}
+          {Object.keys(payment).length !== 0 && (
+            <DeliverySection
+              title={"Payment Method"}
+              method={payment?.method}
+            ></DeliverySection>
+          )}
           <CostContainer>
             {/* <CostSection></CostSection> */}
             <CostSection title={"Cost of goods"} cost={"500,000"}></CostSection>
@@ -95,12 +124,18 @@ function Summary() {
                 cost={"5000"}
               ></CostSection>
             )}
+            {Object.keys(shipment).length !== 0 && (
+              <CostSection
+                title={`${shipment?.method} shipment`}
+                cost={shipment?.amount}
+              ></CostSection>
+            )}
           </CostContainer>
           <TotalCostContainer>
             <CostText>Total</CostText>
             <CostText>505,900</CostText>
           </TotalCostContainer>
-          <Button title={"Continue to Payment"}></Button>
+          {step < 3 && renderTitleButton()}
         </InformationContainer>
       </ItemSummaryContainer>
     </SummaryContainer>

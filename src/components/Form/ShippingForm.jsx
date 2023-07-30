@@ -32,9 +32,9 @@ const OptionContainer = styled.div`
 function ShippingForm() {
   const formCtx = useContext(FormContext);
   let shipmentValue = [
-    { id: 1, method: "GO-SEND", amount: "15,000" },
-    { id: 2, method: "JNE", amount: "9,000" },
-    { id: 3, method: "Personal Courir", amount: "29,000" },
+    { id: 1, method: "GO-SEND", amount: "15,000", estimate: "today" },
+    { id: 2, method: "JNE", amount: "9,000", estimate: "2 days" },
+    { id: 3, method: "Personal Courir", amount: "29,000", estimate: "1 day" },
   ];
 
   let paymentValue = [
