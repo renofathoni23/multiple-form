@@ -21,7 +21,7 @@ const UnderlineTitle = styled.div`
   width: 300px;
   height: 8px;
   background-color: #eeeeee;
-  margin-top: -10px;
+  transform: translateY(-10px);
   z-index: 1;
 `;
 

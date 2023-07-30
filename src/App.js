@@ -36,7 +36,7 @@ const FormFinishContainer = styled.div`
 `;
 
 function App() {
-  const methods = useForm();
+  const methods = useForm({ mode: "all" });
   const formCtx = useContext(FormContext);
   var formStep = formCtx.step;
   console.log(formStep);

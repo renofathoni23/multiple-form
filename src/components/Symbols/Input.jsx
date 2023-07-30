@@ -6,7 +6,9 @@ const InputForm = styled.input`
   color: #2d2a40;
   font-size: 16px;
   font-weight: 700;
-  border: 1px solid #ccc;
+  border: 1px solid
+    ${(props) =>
+      props.hasNoError ? "#1BD97B" : props.isFilled ? "#FF8A00" : "#ccc"};
   background: #fff;
   padding-left: 15px;
   &:focus {
