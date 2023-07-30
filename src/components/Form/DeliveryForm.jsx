@@ -27,7 +27,7 @@ const BackButtonContainer = styled.div`
   margin-bottom: 24px;
 `;
 
-const BackButtonTitle = styled.div`
+const BackButtonTitle = styled.span`
   color: #000;
   font-size: 14px;
   font-weight: 500;

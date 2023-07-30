@@ -7,7 +7,7 @@ const DividerDelivery = styled.div`
   background: #d8d8d8;
 `;
 
-const TitleMethod = styled.div`
+const TitleMethod = styled.span`
   color: #000;
   font-size: 14px;
   font-weight: 400;
@@ -17,7 +17,7 @@ const TitleMethodContainer = styled.div`
   margin: 21px 0px;
 `;
 
-const TextMethod = styled.div`
+const TextMethod = styled.span`
   color: #1bd97b;
   font-size: 16px;
   font-weight: 500;

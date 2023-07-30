@@ -16,7 +16,7 @@ const CheckBoxContainer = styled.div`
   align-items: center;
 `;
 
-const CheckBoxLabel = styled.div`
+const CheckBoxLabel = styled.span`
   color: #2d2a40;
   font-size: 14px;
   font-weight: 500;

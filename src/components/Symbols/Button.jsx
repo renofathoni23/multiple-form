@@ -13,7 +13,7 @@ const ButtonContainer = styled.button`
   }
 `;
 
-const TextButton = styled.div`
+const TextButton = styled.span`
   color: #fff;
   text-align: center;
   font-size: 18px;

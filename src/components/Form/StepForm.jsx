@@ -39,7 +39,7 @@ const NumberStep = styled.div`
   }
 `;
 
-const LabelStep = styled.div`
+const LabelStep = styled.span`
   color: #ff8a00;
   font-size: 16px;
   font-weight: 500;

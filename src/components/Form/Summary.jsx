@@ -18,7 +18,7 @@ const ItemSummaryContainer = styled.div`
   padding: 80px 0px 0px 0px;
 `;
 
-const SummaryTitle = styled.div`
+const SummaryTitle = styled.span`
   color: #ff8a00;
   font-size: 24px;
   font-weight: 700;
@@ -32,9 +32,11 @@ const DividerSummary = styled.div`
 const InformationContainer = styled.div`
   padding: 0px 20px 20px;
   width: 100%;
+  display: flex;
+  flex-direction: column;
 `;
 
-const ItemPurchasedText = styled.div`
+const ItemPurchasedText = styled.span`
   color: #000;
   font-family: Inter;
   font-size: 14px;
@@ -59,7 +61,7 @@ const TotalCostContainer = styled.div`
   margin-bottom: 30px;
 `;
 
-const CostText = styled.div`
+const CostText = styled.span`
   color: #ff8a00;
   font-size: 24px;
   font-weight: 700;

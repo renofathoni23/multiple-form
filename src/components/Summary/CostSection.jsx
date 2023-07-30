@@ -9,14 +9,14 @@ const CostContainer = styled.div`
   margin-bottom: 12px;
 `;
 
-const CostLabel = styled.div`
+const CostLabel = styled.span`
   color: #000;
   font-size: 14px;
   font-weight: 400;
   opacity: 0.6;
 `;
 
-const CostText = styled.div`
+const CostText = styled.span`
   color: #000;
   font-size: 14px;
   font-weight: 700;

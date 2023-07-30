@@ -8,7 +8,7 @@ const HeadingContainer = styled.div`
   justify-content: center;
 `;
 
-const HeadingTitle = styled.div`
+const HeadingTitle = styled.span`
   color: #ff8a00;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
