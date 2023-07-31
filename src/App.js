@@ -44,7 +44,7 @@ function App() {
   const formCtx = useContext(FormContext);
   const methods = useForm({ mode: "all" });
   var formStep = formCtx.step;
-  const { watch, setValue, getValues } = methods;
+  const { setValue, getValues } = methods;
   console.log(formCtx.formValues);
   const ActiveStepContent = () => {
     switch (formStep) {
@@ -63,20 +63,15 @@ function App() {
     const saveFormValues = () => {
       const formValues = getValues();
       localStorage.setItem("formValues", JSON.stringify(formValues));
-      localStorage.setItem("step", formStep);
     };
     window.addEventListener("beforeunload", saveFormValues);
     return () => {
       window.removeEventListener("beforeunload", saveFormValues);
     };
-  }, [getValues, formStep]);
+  }, [getValues]);
 
   useEffect(() => {
     const storedValues = JSON.parse(localStorage.getItem("formValues"));
-    const getStoredStep = localStorage.getItem("step");
-    console.log(parseInt(getStoredStep), "stored");
-    console.log(formCtx.step, "step");
-    formCtx.changeStep(parseInt(getStoredStep));
     if (storedValues) {
       if ("payment" in storedValues) {
         formCtx.onChangePayment(storedValues["payment"]);

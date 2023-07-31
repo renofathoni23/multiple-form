@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { useContext } from "react";
 import FormContext from "../../store/FormContext";
 import { useFormContext } from "react-hook-form";
+import { devices } from "../../utils/MediaQueries";
 
 const CheckBoxInput = styled.input.attrs({
   type: "checkbox",
@@ -10,6 +11,10 @@ const CheckBoxInput = styled.input.attrs({
   width: 18px;
   height: 18px;
   accent-color: #1bd97b;
+  @media ${devices.mobile} {
+    width: 12px;
+    height: 12px;
+  }
 `;
 
 const CheckBoxContainer = styled.div`
@@ -23,6 +28,9 @@ const CheckBoxLabel = styled.span`
   color: #2d2a40;
   font-size: 14px;
   font-weight: 500;
+  @media ${devices.mobile} {
+    font-size: 12px;
+  }
 `;
 
 function CheckBox({ register, name, ...props }) {

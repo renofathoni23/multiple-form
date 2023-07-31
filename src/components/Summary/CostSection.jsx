@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { devices } from "../../utils/MediaQueries";
 
 const CostContainer = styled.div`
   display: flex;
@@ -14,12 +15,18 @@ const CostLabel = styled.span`
   font-size: 14px;
   font-weight: 400;
   opacity: 0.6;
+  @media ${devices.mobile} {
+    font-size: 12px;
+  }
 `;
 
 const CostText = styled.span`
   color: #000;
   font-size: 14px;
   font-weight: 700;
+  @media ${devices.mobile} {
+    font-size: 12px;
+  }
 `;
 
 function CostSection({ title, cost }) {

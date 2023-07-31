@@ -34,6 +34,9 @@ const SummaryTitle = styled.span`
   color: #ff8a00;
   font-size: 24px;
   font-weight: 700;
+  @media ${devices.mobile} {
+    font-size: 22px;
+  }
 `;
 const DividerSummary = styled.div`
   width: 1px;
@@ -63,6 +66,9 @@ const ItemPurchasedText = styled.span`
   opacity: 0.6;
   margin-top: 10px;
   margin-bottom: 21px;
+  @media ${devices.mobile} {
+    font-size: 12px;
+  }
 `;
 
 const CostContainer = styled.div`
@@ -83,6 +89,9 @@ const CostText = styled.span`
   color: #ff8a00;
   font-size: 24px;
   font-weight: 700;
+  @media ${devices.mobile} {
+    font-size: 22px;
+  }
 `;
 
 function Summary() {

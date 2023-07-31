@@ -20,8 +20,9 @@ const InputForm = styled.input`
   }
 
   @media ${devices.mobile} {
+    font-size: 12px;
     width: 90%;
-    height: ${(props) => (props.address ? "120px" : "60px")};
+    height: ${(props) => (props.address ? "80px" : "40px")};
     flex-direction: column;
   }
 `;

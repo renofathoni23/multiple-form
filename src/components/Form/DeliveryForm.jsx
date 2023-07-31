@@ -68,6 +68,7 @@ const AddressCounter = styled.span`
   @media ${devices.mobile} {
     flex-direction: column;
     align-items: baseline;
+    font-size: 12px;
   }
 `;
 
