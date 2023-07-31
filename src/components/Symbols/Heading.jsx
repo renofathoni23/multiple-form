@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { devices } from "../../utils/MediaQueries";
 
 const HeadingContainer = styled.div`
   width: 300px;

@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { devices } from "../../utils/MediaQueries";
 
 const InputForm = styled.input`
   width: ${(props) => (props.dropshipper ? "300px" : "400px")};
@@ -16,6 +17,12 @@ const InputForm = styled.input`
   }
   &::placeholder {
     font-weight: 500;
+  }
+
+  @media ${devices.mobile} {
+    width: 90%;
+    height: ${(props) => (props.address ? "120px" : "60px")};
+    flex-direction: column;
   }
 `;
 

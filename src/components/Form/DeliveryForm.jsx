@@ -5,11 +5,17 @@ import InputForm from "../Symbols/Input";
 import Heading from "../Symbols/Heading";
 import arrow from "../../assets/arrow_back.png";
 import { useFormContext } from "react-hook-form";
+import { devices } from "../../utils/MediaQueries";
 
 const StyledColumn = styled.div`
   display: flex;
   flex-direction: column;
   row-gap: 10px;
+  @media ${devices.mobile} {
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+  }
 `;
 
 const StyledRow = styled.div`
@@ -17,6 +23,12 @@ const StyledRow = styled.div`
   flex-direction: row;
   column-gap: 30px;
   margin-top: 36px;
+  @media ${devices.mobile} {
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    row-gap: 20px;
+  }
 `;
 
 const BackButtonContainer = styled.div`
@@ -40,6 +52,10 @@ const HeadingCheckBoxContainer = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  @media ${devices.mobile} {
+    flex-direction: column;
+    align-items: baseline;
+  }
 `;
 
 const AddressCounter = styled.span`
@@ -48,6 +64,11 @@ const AddressCounter = styled.span`
   font-weight: 500;
   opacity: 0.6;
   text-align: right;
+  display: flex;
+  @media ${devices.mobile} {
+    flex-direction: column;
+    align-items: baseline;
+  }
 `;
 
 function DeliveryForm() {

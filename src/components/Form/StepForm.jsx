@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import FormContext from "../../store/FormContext";
 import { useContext } from "react";
+import { devices } from "../../utils/MediaQueries";
 
 const StepFormContainer = styled.div`
   width: 500px;
@@ -13,6 +14,12 @@ const StepFormContainer = styled.div`
   justify-content: center;
   align-items: center;
   transform: translateY(35px);
+  @media ${devices.mobile} {
+    width: 100%;
+    height: 100%;
+    transform: translateY(0px);
+    margin-top: 20px;
+  }
 `;
 
 const StepItemContainer = styled.div`
@@ -21,6 +28,9 @@ const StepItemContainer = styled.div`
   column-gap: 10px;
   align-items: center;
   justify-content: center;
+  @media ${devices.mobile} {
+    column-gap: 1px;
+  }
 `;
 
 const NumberStep = styled.div`
@@ -43,6 +53,9 @@ const LabelStep = styled.span`
   color: #ff8a00;
   font-size: 16px;
   font-weight: 500;
+  @media ${devices.mobile} {
+    display: none;
+  }
 `;
 
 const Arrow = styled.div`

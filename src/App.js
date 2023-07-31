@@ -5,9 +5,10 @@ import Summary from "./components/Form/Summary";
 import { FormProvider, useForm } from "react-hook-form";
 import StepForm from "./components/Form/StepForm";
 import FormContext from "./store/FormContext";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import ShippingForm from "./components/Form/ShippingForm";
 import FinishForm from "./components/Form/FinishForm";
+import { devices } from "./utils/MediaQueries";
 
 const StyledContainer = styled.div`
   width: 1100px;
@@ -17,20 +18,34 @@ const StyledContainer = styled.div`
   border-radius: 4px;
   display: flex;
   flex-direction: row;
+  @media ${devices.mobile} {
+    width: 95%;
+    height: 100%;
+    flex-direction: column;
+    margin-bottom: 20px;
+  }
 `;
 const FormContainer = styled.div`
   width: 75%;
   height: 100%;
+  @media ${devices.mobile} {
+    width: 100%;
+  }
 `;
 const FormWrapper = styled.div`
   height: 100%;
   margin: 30px 30px 0 40px;
+  @media ${devices.mobile} {
+    margin: 10px 0px 0px 10px;
+  }
 `;
 
 function App() {
-  const methods = useForm({ mode: "all" });
   const formCtx = useContext(FormContext);
+  const methods = useForm({ mode: "all" });
   var formStep = formCtx.step;
+  const { watch, setValue, getValues } = methods;
+  console.log(formCtx.formValues);
   const ActiveStepContent = () => {
     switch (formStep) {
       case 1:
@@ -43,6 +58,38 @@ function App() {
         return null;
     }
   };
+
+  useEffect(() => {
+    const saveFormValues = () => {
+      const formValues = getValues();
+      localStorage.setItem("formValues", JSON.stringify(formValues));
+      localStorage.setItem("step", formStep);
+    };
+    window.addEventListener("beforeunload", saveFormValues);
+    return () => {
+      window.removeEventListener("beforeunload", saveFormValues);
+    };
+  }, [getValues, formStep]);
+
+  useEffect(() => {
+    const storedValues = JSON.parse(localStorage.getItem("formValues"));
+    const getStoredStep = localStorage.getItem("step");
+    console.log(parseInt(getStoredStep), "stored");
+    console.log(formCtx.step, "step");
+    formCtx.changeStep(parseInt(getStoredStep));
+    if (storedValues) {
+      if ("payment" in storedValues) {
+        formCtx.onChangePayment(storedValues["payment"]);
+      }
+      if ("shipment" in storedValues) {
+        formCtx.onChangeShipment(storedValues["shipment"]);
+      }
+      Object.keys(storedValues).forEach((key) => {
+        setValue(key, storedValues[key]);
+      });
+    }
+  }, []);
+
   return (
     <div className="App">
       <FormProvider {...methods}>

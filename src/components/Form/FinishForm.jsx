@@ -5,6 +5,7 @@ import FormContext from "../../store/FormContext";
 import { useContext } from "react";
 import arrow from "../../assets/arrow_back.png";
 import { useFormContext } from "react-hook-form";
+import { devices } from "../../utils/MediaQueries";
 
 const FinishFormContainer = styled.div`
   width: 100%;
@@ -18,6 +19,10 @@ const FinishFormContainer = styled.div`
 const CenterFormContainer = styled.div`
   width: 50%;
   height: 50%;
+  @media ${devices.mobile} {
+    width: 100%;
+    height: 100%;
+  }
 `;
 
 const OrderText = styled.span`
@@ -27,6 +32,9 @@ const OrderText = styled.span`
   display: flex;
   flex-direction: column;
   margin-top: 26px;
+  @media ${devices.mobile} {
+    text-align: center;
+  }
 `;
 
 const ShipmentInformationText = styled.span`
@@ -35,6 +43,9 @@ const ShipmentInformationText = styled.span`
   font-weight: 400;
   opacity: 0.6;
   margin-top: 9px;
+  @media ${devices.mobile} {
+    text-align: center;
+  }
 `;
 
 const BackButtonContainer = styled.div`
@@ -45,6 +56,10 @@ const BackButtonContainer = styled.div`
   cursor: pointer;
   margin-bottom: 24px;
   margin-top: 60px;
+  @media ${devices.mobile} {
+    justify-content: center;
+    margin-top: 30px;
+  }
 `;
 
 const BackButtonTitle = styled.span`

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import arrow from "../../assets/arrow_back.png";
 import FormContext from "../../store/FormContext";
@@ -6,6 +6,7 @@ import { useContext } from "react";
 import Heading from "../Symbols/Heading";
 import RadioButton from "../Symbols/RadioButton";
 import { useFormContext } from "react-hook-form";
+import { devices } from "../../utils/MediaQueries";
 
 const BackButtonContainer = styled.div`
   display: flex;
@@ -29,6 +30,12 @@ const OptionContainer = styled.div`
   column-gap: 10px;
   margin-top: 30px;
   margin-bottom: 60px;
+  @media ${devices.mobile} {
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 15px;
+    margin-bottom: 36px;
+  }
 `;
 function ShippingForm() {
   const { setValue } = useFormContext();

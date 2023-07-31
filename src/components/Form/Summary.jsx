@@ -6,12 +6,18 @@ import { useFormContext } from "react-hook-form";
 import { useContext } from "react";
 import FormContext from "../../store/FormContext";
 import DeliverySection from "../Summary/DeliverySection";
+import { devices } from "../../utils/MediaQueries";
 
 const SummaryContainer = styled.div`
   width: 25%;
   height: 100%;
   display: flex;
   flex-direction: row;
+  @media ${devices.mobile} {
+    width: 100%;
+    flex-direction: column;
+    background-color: #fff;
+  }
 `;
 
 const ItemSummaryContainer = styled.div`
@@ -19,6 +25,9 @@ const ItemSummaryContainer = styled.div`
   flex-direction: row;
   width: 100%;
   padding: 80px 0px 0px 0px;
+  @media ${devices.mobile} {
+    padding: 0px;
+  }
 `;
 
 const SummaryTitle = styled.span`
@@ -30,6 +39,9 @@ const DividerSummary = styled.div`
   width: 1px;
   height: 460px;
   background-color: rgba(255, 138, 0, 0.2);
+  @media ${devices.mobile} {
+    display: none;
+  }
 `;
 
 const InformationContainer = styled.div`
@@ -37,6 +49,10 @@ const InformationContainer = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
+  @media ${devices.mobile} {
+    height: 100%;
+    margin-top: 30px;
+  }
 `;
 
 const ItemPurchasedText = styled.span`
@@ -50,7 +66,6 @@ const ItemPurchasedText = styled.span`
 `;
 
 const CostContainer = styled.div`
-  /* margin-top: 88px; */
   display: flex;
   flex-direction: column;
 `;

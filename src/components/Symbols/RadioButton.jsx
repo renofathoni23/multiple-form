@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { useContext } from "react";
 import FormContext from "../../store/FormContext";
 import check from "../../assets/check.png";
+import { devices } from "../../utils/MediaQueries";
 
 const RadioButtonContainer = styled.div`
   width: 180px;
@@ -16,6 +17,9 @@ const RadioButtonContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   cursor: pointer;
+  @media ${devices.mobile} {
+    width: 130px;
+  }
 `;
 
 const TextContainer = styled.div`

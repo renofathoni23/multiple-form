@@ -4,6 +4,7 @@ const FormContext = React.createContext({
   onBack: () => {},
   onNext: () => {},
   resetStep: () => {},
+  changeStep: () => {},
   step: 0,
   shipmentMethod: {},
   paymentMethod: {},
@@ -11,6 +12,8 @@ const FormContext = React.createContext({
   onChangePayment: () => {},
   cost: 0,
   changeCost: () => {},
+  formValues: {},
+  changeFormValue: () => {},
 });
 
 export const FormProvider = (props) => {
@@ -18,6 +21,7 @@ export const FormProvider = (props) => {
   const [shipmentMethod, setShipmentMethod] = useState({});
   const [paymentMethod, setPaymentMethod] = useState({});
   const [cost, setCost] = useState(500000);
+  const [formValues, setFormValues] = useState();
 
   function onNext() {
     setStep((prev) => prev + 1);
@@ -43,6 +47,14 @@ export const FormProvider = (props) => {
     setCost(cost);
   }
 
+  function changeFormValue(value) {
+    setFormValues(value);
+  }
+
+  function changeStep(step) {
+    setStep(step);
+  }
+
   const contextValue = {
     onBack: onBack,
     onNext: onNext,
@@ -54,6 +66,9 @@ export const FormProvider = (props) => {
     cost: cost,
     changeCost: changeCost,
     resetStep: resetStep,
+    formValues: formValues,
+    changeFormValue: changeFormValue,
+    changeStep: changeStep,
   };
 
   return (
