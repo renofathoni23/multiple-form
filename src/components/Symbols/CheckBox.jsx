@@ -4,6 +4,7 @@ import { useContext } from "react";
 import FormContext from "../../store/FormContext";
 import { useFormContext } from "react-hook-form";
 import { devices } from "../../utils/MediaQueries";
+import "@fontsource/inter/500.css";
 
 const CheckBoxInput = styled.input.attrs({
   type: "checkbox",
@@ -28,6 +29,8 @@ const CheckBoxLabel = styled.span`
   color: #2d2a40;
   font-size: 14px;
   font-weight: 500;
+  font-family: "Inter";
+  opacity: 0.8;
   @media ${devices.mobile} {
     font-size: 12px;
   }

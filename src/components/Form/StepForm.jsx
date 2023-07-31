@@ -3,6 +3,7 @@ import styled from "styled-components";
 import FormContext from "../../store/FormContext";
 import { useContext } from "react";
 import { devices } from "../../utils/MediaQueries";
+import arrow_orange from "../../assets/keyboard_arrow_right.png";
 
 const StepFormContainer = styled.div`
   width: 500px;
@@ -58,14 +59,6 @@ const LabelStep = styled.span`
   }
 `;
 
-const Arrow = styled.div`
-  color: #ff8a00;
-  text-align: center;
-  font-size: 24px;
-  font-weight: 400;
-  margin: 0px 22px;
-`;
-
 function StepForm() {
   const formCtx = useContext(FormContext);
   let stepState = formCtx.step;
@@ -76,12 +69,12 @@ function StepForm() {
           <div>1</div>
         </NumberStep>
         <LabelStep>Delivery</LabelStep>
-        <Arrow>{">"}</Arrow>
+        <img src={arrow_orange} alt="arrow_orange"></img>
         <NumberStep step="2" stepState={stepState}>
           <div>2</div>
         </NumberStep>
         <LabelStep>Payment</LabelStep>
-        <Arrow>{">"}</Arrow>
+        <img src={arrow_orange} alt="arrow_orange"></img>
         <NumberStep step="3" stepState={stepState}>
           <div>3</div>
         </NumberStep>

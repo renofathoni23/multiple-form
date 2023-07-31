@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { devices } from "../../utils/MediaQueries";
+import "@fontsource/montserrat/700.css";
 
 const HeadingContainer = styled.div`
   width: 300px;
@@ -12,8 +13,9 @@ const HeadingContainer = styled.div`
 const HeadingTitle = styled.span`
   color: #ff8a00;
   font-size: 36px;
-  font-weight: 800;
+  font-weight: 700;
   z-index: 2;
+  font-family: "Montserrat";
   @media ${devices.mobile} {
     font-size: 28px;
   }

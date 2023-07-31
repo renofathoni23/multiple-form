@@ -1,70 +1,55 @@
-# Getting Started with Create React App
+# Jakmall Tech Test
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Reno Fathoni
+Tech Stack: React, React Hook Form, Styled Component
 
-## Available Scripts
+## Penjelasan singkat
 
-In the project directory, you can run:
+Form Jakmall adalah form yang digunakan untuk mengumpulkan informasi mengenai pengiriman suatu barang. Form ini merupakan form multistep sehingga akan terdapat beberapa halaman pada form tersebut.
 
-### `npm start`
+## Penggunaan dan Langkah-langkah
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+1. Mengisi form pada halaman pertama. Field yang wajib diisi adalah form Delivery Address dan field dropshipper serta dropshipper phone number jika pengguna menceklis checkbox 'Send as Dropshipper'. Jika belum valid, maka Button akan disabled, namun jika pengisian sudah valid, maka dapat mengklik button dan melanjutkan tahap selanjutnya.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+2. Pada step ke 2, terdapat pilihan shipment dan payment yang harus dipilih oleh pengguna, jika tidak dipilih maka pengguna tidak dapat melanjutkan ke tahap selanjutnya, maka dari itu button tidak akan muncul terlebih dahulu. Jika kedua bagian tersebut sudah diisi, maka akan muncul button dan dapat diklik oleh pengguna untuk ke tahap selanjutnya.
 
-### `npm test`
+3. Pada step ke 3, hanya terdapat informasi mengenai form yang telah diisi dan juga terdapat informasi mengenai ID dari order tersebut. Jika pengguna mengklik "Go to Homepage" maka pengguna akan dikembalikan ke halaman pertama dan isian form akan ter reset.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Informasi lainnya
 
-### `npm run build`
+- Menggunakan localStorage untuk menyimpan values form ketika reload page
+- Masih terdapat beberapa bug seperti cost yang akan kembali ke state awal jika page ke reload walaupun checkbox dropshipper tetap terceklis.
+- Beberapa tampilan UI tidak sama dengan yang ada di Figma, contohnya bagian summary, input pada form step 1 dan warna checkbox.
+- Form sudah mobile responsive namun belum responsive jika max-width media queries lebih dari 768px.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Penjelasan Project Structure
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Components
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Terdapat 3 folder, yaitu Form, Summary, dan juga Symbols
 
-### `npm run eject`
+#### Form
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- Berisikan komponen-komponen yang ada pada form seperti form step 1, step 2, step 2, bagian summary dan juga step navigator.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+#### Summary
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- Berisikan komponen-komponen kecil yang akan digunakan pada bagian summary.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+#### Symbols
 
-## Learn More
+- Berisikan komponen-komponen reusable yang digunakan pada setiap step form yang ada.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Store
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Tempat penyimpanan file untuk state management, pada kasus ini developer menggunakan react state management useContext.
 
-### Code Splitting
+### Utils
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Tempat untuk menyimpan file yang berguna untuk alat bantu. Pada kasus ini developer menyimpan media queries untuk kebutuhan styling mobile responsive.
 
-### Analyzing the Bundle Size
+## Informasi lainnya mengenai developer
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- Pertama kali memakai/mengimplementasikan react hook form dan juga styled component.
 
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Please provide your feedback about my work to help me improve, thank you :)

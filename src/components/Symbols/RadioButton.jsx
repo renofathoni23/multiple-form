@@ -1,7 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import { useContext } from "react";
-import FormContext from "../../store/FormContext";
 import check from "../../assets/check.png";
 import { devices } from "../../utils/MediaQueries";
 

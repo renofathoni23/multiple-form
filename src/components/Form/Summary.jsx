@@ -7,6 +7,7 @@ import { useContext } from "react";
 import FormContext from "../../store/FormContext";
 import DeliverySection from "../Summary/DeliverySection";
 import { devices } from "../../utils/MediaQueries";
+import "@fontsource/montserrat/700.css";
 
 const SummaryContainer = styled.div`
   width: 25%;
@@ -34,6 +35,7 @@ const SummaryTitle = styled.span`
   color: #ff8a00;
   font-size: 24px;
   font-weight: 700;
+  font-family: "Montserrat";
   @media ${devices.mobile} {
     font-size: 22px;
   }

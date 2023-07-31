@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import FormContext from "../../store/FormContext";
 import { useContext } from "react";
+import "@fontsource/inter";
 
 const ButtonContainer = styled.button`
   width: 100%;
@@ -18,6 +19,7 @@ const TextButton = styled.span`
   text-align: center;
   font-size: 18px;
   font-weight: 500;
+  font-family: "Inter";
 `;
 function Button({ title, isValid }) {
   const formCtx = useContext(FormContext);
