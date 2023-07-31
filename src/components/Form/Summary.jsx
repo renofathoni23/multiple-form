@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
 import CostSection from "../Summary/CostSection";
 import Button from "../Symbols/Button";
@@ -71,7 +71,10 @@ const CostText = styled.span`
 `;
 
 function Summary() {
-  const { getValues } = useFormContext();
+  const {
+    getValues,
+    formState: { isValid },
+  } = useFormContext();
   let isDropShipper = getValues("isDropshipper");
 
   const formCtx = useContext(FormContext);
@@ -82,13 +85,18 @@ function Summary() {
 
   const renderTitleButton = () => {
     if (step === 1) {
-      return <Button title={"Continue to Payment"}></Button>;
+      return <Button title={"Continue to Payment"} isValid={isValid}></Button>;
     } else if (step === 2) {
       if (
         Object.keys(shipment).length !== 0 &&
         Object.keys(payment).length !== 0
       ) {
-        return <Button title={`Pay with ${payment?.method}`}></Button>;
+        return (
+          <Button
+            title={`Pay with ${payment?.method}`}
+            isValid={isValid}
+          ></Button>
+        );
       }
     }
   };
@@ -100,10 +108,6 @@ function Summary() {
         <InformationContainer>
           <SummaryTitle>Summary</SummaryTitle>
           <ItemPurchasedText>10 items purchased</ItemPurchasedText>
-          {/* <DeliverySection
-            title={"Delivery estimation"}
-            method={"today by GO-SEND"}
-          ></DeliverySection> */}
           {Object.keys(shipment).length !== 0 && (
             <DeliverySection
               title={"Delivery estimation"}
@@ -117,7 +121,6 @@ function Summary() {
             ></DeliverySection>
           )}
           <CostContainer>
-            {/* <CostSection></CostSection> */}
             <CostSection title={"Cost of goods"} cost={"500,000"}></CostSection>
             {isDropShipper && (
               <CostSection

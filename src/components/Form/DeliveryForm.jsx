@@ -69,6 +69,12 @@ function DeliveryForm() {
   //Check Dropshipper
   let isCheckDropshipper = watch("isDropshipper");
 
+  //Check length Dropshippername value
+  let dropshipperName = watch("dropshipperName");
+
+  //Value Form
+  let valueForm = getValues();
+
   return (
     <>
       <BackButtonContainer>
@@ -130,6 +136,10 @@ function DeliveryForm() {
                 },
               })}
               placeholder="Delivery Address"
+              hasNoError={
+                !errors.address && "address" in valueForm && inputLength !== 0
+              }
+              isFilled={!!watch("address")}
             ></InputForm>
             <AddressCounter>
               Characters Entered: {inputLength}/120
@@ -142,9 +152,18 @@ function DeliveryForm() {
               id="dropshipperName"
               {...register("dropshipperName", {
                 required: isCheckDropshipper ? "This Field is required" : false,
+                minLength: {
+                  value: 1,
+                },
               })}
               placeholder="Dropshipper name"
               disabled={!getValues("isDropshipper")}
+              hasNoError={
+                !errors.dropshipperName &&
+                "dropshipperName" in valueForm &&
+                dropshipperName !== undefined
+              }
+              isFilled={!!watch("dropshipperName")}
             ></InputForm>
             <InputForm
               type="text"
@@ -152,6 +171,10 @@ function DeliveryForm() {
               id="dropshipperNumber"
               {...register("dropshipperNumber", {
                 required: isCheckDropshipper ? "This Field is required" : false,
+                pattern: {
+                  value: phoneNumberPattern,
+                  message: "Please enter a valid phone number (6-20 digits)",
+                },
               })}
               placeholder="Dropshipper phone number"
               disabled={!getValues("isDropshipper")}
@@ -163,7 +186,7 @@ function DeliveryForm() {
             ></InputForm>
           </StyledColumn>
         </StyledRow>
-        <div>{JSON.stringify(watch(), null, 2)}</div>
+        {/* <div>{JSON.stringify(watch(), null, 2)}</div> */}
       </form>
     </>
   );
