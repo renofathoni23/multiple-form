@@ -2,6 +2,7 @@
 
 Reno Fathoni
 Tech Stack: React, React Hook Form, Styled Component
+
 Live: https://jakmall-test-jayfl255f-renofathoni23.vercel.app/
 
 ## Penjelasan singkat
