@@ -1,4 +1,4 @@
-# Form Jakmall
+# Multiple Step Form
 
 Reno Fathoni
 Tech Stack: React, React Hook Form, Styled Component
@@ -7,7 +7,7 @@ Live: https://jakmall-test-jayfl255f-renofathoni23.vercel.app/
 
 ## Penjelasan singkat
 
-Form Jakmall adalah form yang digunakan untuk mengumpulkan informasi mengenai pengiriman suatu barang. Form ini merupakan form multistep sehingga akan terdapat beberapa halaman pada form tersebut.
+Multiple Step Form Jakmall adalah form yang digunakan untuk mengumpulkan informasi mengenai pengiriman suatu barang. Form ini merupakan form multistep sehingga akan terdapat beberapa halaman pada form tersebut.
 
 ## Penggunaan dan Langkah-langkah
 
