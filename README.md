@@ -1,4 +1,4 @@
-# Jakmall Tech Test
+# Form Jakmall
 
 Reno Fathoni
 Tech Stack: React, React Hook Form, Styled Component
