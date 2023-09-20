@@ -50,8 +50,5 @@ Tempat penyimpanan file untuk state management, pada kasus ini developer menggun
 
 Tempat untuk menyimpan file yang berguna untuk alat bantu. Pada kasus ini developer menyimpan media queries untuk kebutuhan styling mobile responsive.
 
-## Informasi lainnya mengenai developer
-
-- Pertama kali memakai/mengimplementasikan react hook form dan juga styled component.
 
 Please provide your feedback about my work to help me improve, thank you :)
